@@ -25,6 +25,8 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   screen: {
+    borderTopWidth: 1,
+    borderTopColor: colors.mBlue,
     flex: 1,
     paddingTop: Constants.statusBarHeight,
   },

@@ -1,23 +1,24 @@
 import React from "react";
 import { View, StyleSheet, TouchableOpacity, Image, Text } from "react-native";
+import AppButton from "../components/AppButton";
 import Screen from "../components/Screen";
 import colors from "../config/colors";
+import routes from "../navigations/routes";
 
 function HomeScreen({ navigation }) {
   return (
     <Screen style={styles.container}>
       <Image
-        style={{ width: 300, height: 267 }}
+        style={styles.image}
         source={require("../assets/elephantChat.png")}
         resizeMode="contain"
       />
-      <TouchableOpacity
+      <AppButton
         style={styles.startBtn}
-        onPress={() => navigation.navigate("Screening")}
+        onPress={() => navigation.navigate(routes.SCREENING)}
       >
-        {/* 8:54 */}
-        <Text style={{ color: colors.white }}>START</Text>
-      </TouchableOpacity>
+        start
+      </AppButton>
     </Screen>
   );
 }
@@ -27,12 +28,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+  image: {
+    height: 267,
+    width: 300,
+  },
 
   startBtn: {
-    backgroundColor: colors.mPink,
-    paddingHorizontal: 14,
-    paddingVertical: 12,
-    borderRadius: 13,
     position: "absolute",
     top: "58%",
     left: "53%",

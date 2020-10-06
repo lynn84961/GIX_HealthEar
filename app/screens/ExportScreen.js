@@ -1,20 +1,14 @@
 import React from "react";
 import { View, StyleSheet, TouchableOpacity, Image, Text } from "react-native";
+
+import AppButton from "../components/AppButton";
 import Screen from "../components/Screen";
 import colors from "../config/colors";
 
 function ExportScreen(props) {
   return (
     <Screen style={styles.container}>
-      <TouchableOpacity
-        style={styles.startBtn}
-        onPress={() => {
-          alert("Pressed");
-        }}
-      >
-        {/* 8:54 */}
-        <Text style={{ color: colors.white }}>Export</Text>
-      </TouchableOpacity>
+      <AppButton onPress={() => alert("Pressed")}>export</AppButton>
     </Screen>
   );
 }

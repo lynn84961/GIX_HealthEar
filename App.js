@@ -7,12 +7,14 @@ import AppTabNavigator from "./app/navigations/AppTabNavigator";
 import navigationThemes from "./app/navigations/navigationThemes";
 import ScreeningNavigator from "./app/navigations/ScreeningNavigator";
 import RootNavigation from "./app/navigations/RootNavigation";
+import ListingEditScreen from "./app/screens/ListingEditScreen";
 
 export default function App() {
   return (
     <NavigationContainer theme={navigationThemes}>
       <RootNavigation />
     </NavigationContainer>
+    // <ListingEditScreen />
   );
 }
 

@@ -6,6 +6,7 @@ import colors from "../config/colors";
 import HomeScreen from "../screens/HomeScreen";
 import HistoryScreen from "../screens/HistoryScreen";
 import ExportScreen from "../screens/ExportScreen";
+import routes from "./routes";
 
 const Tab = createBottomTabNavigator();
 const AppTabNavigator = () => (
@@ -20,7 +21,7 @@ const AppTabNavigator = () => (
     }}
   >
     <Tab.Screen
-      name="Home"
+      name={routes.HOME}
       component={HomeScreen}
       options={{
         tabBarIcon: ({ size, color }) => (
@@ -29,7 +30,7 @@ const AppTabNavigator = () => (
       }}
     />
     <Tab.Screen
-      name="History"
+      name={routes.HISTORY}
       component={HistoryScreen}
       options={{
         tabBarIcon: ({ size, color }) => (
@@ -38,7 +39,7 @@ const AppTabNavigator = () => (
       }}
     />
     <Tab.Screen
-      name="Export"
+      name={routes.EXPORT}
       component={ExportScreen}
       options={{
         tabBarIcon: ({ size, color }) => (
