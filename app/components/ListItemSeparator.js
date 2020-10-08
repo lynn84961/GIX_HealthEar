@@ -2,13 +2,14 @@ import React from "react";
 import { View, StyleSheet } from "react-native";
 import colors from "../config/colors";
 
-function ListItemSeparator() {
-  return <View style={styles.separator} />;
+const width = "90%";
+function ListItemSeparator(width) {
+  return <View style={[styles.separator, width]} />;
 }
 const styles = StyleSheet.create({
   separator: {
     alignSelf: "center",
-    width: "90%",
+    width: width,
     height: 1,
     backgroundColor: colors.bgDayBlue,
   },
