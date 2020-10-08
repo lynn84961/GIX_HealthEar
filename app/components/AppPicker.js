@@ -60,7 +60,7 @@ function AppPicker({
           />
         </View>
       </TouchableWithoutFeedback>
-      <Modal visible={modalVisible} animationType="slide">
+      <Modal visible={modalVisible} animationType="slide" style={{ flex: 0 }}>
         <Screen style={styles.modalContainer}>
           <TouchableOpacity
             onPress={() => {
@@ -118,6 +118,7 @@ const styles = StyleSheet.create({
   },
   modalContainer: {
     backgroundColor: colors.white,
+    // height: "50%",
   },
   placeholder: {
     color: defaultStyles.colors.mBlue,

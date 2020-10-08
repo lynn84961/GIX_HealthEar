@@ -8,7 +8,7 @@ import {
   StyleSheet,
 } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
 
 import Screen from "../components/Screen";
 import colors from "../config/colors";
@@ -20,6 +20,7 @@ import ScreeningIntro from "../screens/Screening/ScreeningIntro";
 import ScreeningSoundTest from "../screens/Screening/ScreeningSoundTest";
 import ScreeningActual from "../screens/Screening/ScreeningActual";
 import ScreeningResult from "../screens/Screening/ScreeningResult";
+import ScreeningSoundTest2 from "../screens/Screening/ScreeningSoundTest2";
 
 const Process2 = ({ navigation }) => (
   <Screen>
@@ -44,6 +45,34 @@ function ScreeningNavigator({ navigation }) {
             fontSize: 20,
           },
           headerTintColor: colors.mBlue,
+          // headerLeft: () => {
+          //   return (
+          //     <View>
+          //       <TouchableOpacity
+          //         onPress={() => {
+          //           navigation.goBack();
+          //         }}
+          //         style={{ flexDirection: "row", alignItems: "center" }}
+          //       >
+          //         <MaterialIcons
+          //           name="keyboard-arrow-left"
+          //           size={40}
+          //           color={colors.mBlue}
+          //           // style={{ borderColor: "black", borderWidth: 1 }}
+          //         />
+          //         <AppText
+          //           style={{
+          //             color: colors.mBlue,
+          //             fontSize: 20,
+          //             fontWeight: "bold",
+          //           }}
+          //         >
+          //           Back
+          //         </AppText>
+          //       </TouchableOpacity>
+          //     </View>
+          //   );
+          // },
           headerRight: () => {
             return (
               <View>
@@ -71,12 +100,17 @@ function ScreeningNavigator({ navigation }) {
         />
         <Stack.Screen name="Connection" component={ScreeningConnection} />
         <Stack.Screen name="Sound Test" component={ScreeningSoundTest} />
+        <Stack.Screen
+          name="Sound Test 2"
+          component={ScreeningSoundTest2}
+          options={{ headerTitle: "Sound Test" }}
+        />
         <Stack.Screen name="Actual" component={ScreeningActual} />
         <Stack.Screen
           name="Result"
           component={ScreeningResult}
           options={{
-            headerLeft: () => null,
+            // headerLeft: () => null,
             headerRight: () => {
               return (
                 <View>

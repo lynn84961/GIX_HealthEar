@@ -8,13 +8,15 @@ import navigationThemes from "./app/navigations/navigationThemes";
 import ScreeningNavigator from "./app/navigations/ScreeningNavigator";
 import RootNavigation from "./app/navigations/RootNavigation";
 import ListingEditScreen from "./app/screens/ListingEditScreen";
+import ScreeningResult from "./app/screens/Screening/ScreeningResult";
+import HistoryScreen from "./app/screens/HistoryScreen";
 
 export default function App() {
   return (
     <NavigationContainer theme={navigationThemes}>
       <RootNavigation />
     </NavigationContainer>
-    // <ListingEditScreen />
+    // <HistoryScreen />
   );
 }
 

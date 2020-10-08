@@ -7,6 +7,11 @@ import colors from "../../config/colors";
 import Screen from "../../components/Screen";
 import AppButton from "../../components/AppButton";
 
+const result = {
+  left: true,
+  right: false,
+};
+
 function ScreeningActual({ navigation }) {
   const [modalVisible, setModalVisible] = useState(false);
   return (
@@ -19,7 +24,7 @@ function ScreeningActual({ navigation }) {
             style={styles.parentImg}
           />
           <AppText style={styles.parent}>
-            Please put the earbuds on for your kid.
+            Please hand the phone to your kid.
           </AppText>
           <Image
             resizeMode="contain"
@@ -42,7 +47,9 @@ function ScreeningActual({ navigation }) {
 
           <AppButton
             onPress={() => {
-              navigation.navigate("Result");
+              navigation.navigate("Result", {
+                result,
+              });
               setModalVisible(false);
             }}
           >
@@ -61,7 +68,7 @@ const styles = StyleSheet.create({
     height: "90%",
     position: "absolute",
     top: "10%",
-    width: "70%",
+    width: "80%",
     // borderWidth: 1,
     // borderColor: "black",
   },

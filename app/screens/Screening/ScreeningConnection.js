@@ -13,7 +13,7 @@ import SubmitButton from "../../components/SubmitButton";
 
 const validationSchema = Yup.object().shape({
   device: Yup.object()
-    .required("Please select bluetooth earphones.")
+    .required("Please select a device.")
     .nullable()
     .label("device"),
 });
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
     height: "90%",
     position: "absolute",
     top: "10%",
-    width: "70%",
+    width: "80%",
   },
   deviceContainer: {
     borderColor: colors.tBlue,
@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
     height: 200,
     width: "100%",
   },
-  intro: { marginBottom: 30 },
+  intro: { alignSelf: "flex-start", marginBottom: 30 },
   nextBtn: {
     alignSelf: "center",
     bottom: 50,

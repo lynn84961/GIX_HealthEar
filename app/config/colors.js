@@ -6,4 +6,5 @@ export default {
   white: "#FFFFFF",
   bgDayBlue: "#89D9FC",
   bgDayYellow: "#FEFFD3",
+  light: "#f8f4f4",
 };
