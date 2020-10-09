@@ -1,12 +1,5 @@
 import React, { useState } from "react";
-import {
-  Button,
-  Text,
-  View,
-  TouchableOpacity,
-  Modal,
-  StyleSheet,
-} from "react-native";
+import { View, TouchableOpacity, Modal, StyleSheet } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
 
@@ -22,12 +15,6 @@ import ScreeningActual from "../screens/Screening/ScreeningActual";
 import ScreeningResult from "../screens/Screening/ScreeningResult";
 import ScreeningSoundTest2 from "../screens/Screening/ScreeningSoundTest2";
 
-const Process2 = ({ navigation }) => (
-  <Screen>
-    <Text>Process 1</Text>
-    <Button title="Leave" onPress={() => navigation.navigate(routes.APP_TAB)} />
-  </Screen>
-);
 //navigation.navigate(routes.APP_TAB)
 const Stack = createStackNavigator();
 
@@ -39,6 +26,7 @@ function ScreeningNavigator({ navigation }) {
       <Stack.Navigator
         screenOptions={{
           gestureEnabled: false,
+          headerBackTitle: "Back",
           headerTitleStyle: {
             color: colors.mBlue,
             fontWeight: "bold",
@@ -129,7 +117,6 @@ function ScreeningNavigator({ navigation }) {
             },
           }}
         />
-        <Stack.Screen name="Process2" component={Process2} />
       </Stack.Navigator>
 
       <Modal visible={modalVisible}>

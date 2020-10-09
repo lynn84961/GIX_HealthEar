@@ -6,26 +6,62 @@ import {
   Image,
   Text,
   ScrollView,
+  FlatList,
 } from "react-native";
 import AppButton from "../components/AppButton";
 import AppText from "../components/AppText";
+import HistoryCard from "../components/HistoryCard";
 import Screen from "../components/Screen";
 import colors from "../config/colors";
+import navigationThemes from "../navigations/navigationThemes";
 
-function HistoryScreen(props) {
+const historyData = [
+  {
+    date: "Oct 11th, 2020",
+    time: "13:23",
+    left: true,
+    right: true,
+  },
+  {
+    date: "Oct 10th, 2020",
+    time: "19:33",
+    left: true,
+    right: false,
+  },
+  {
+    date: "Oct 9th, 2020",
+    time: "19:25",
+    left: true,
+    right: false,
+  },
+  {
+    date: "Oct 8th, 2020",
+    time: "18:50",
+    left: false,
+    right: false,
+  },
+];
+
+function HistoryScreen({ navigation }) {
   return (
     <Screen style={styles.container}>
-      <ScrollView style={styles.SVContainer}>
-        <View style={styles.container}>
-          <TouchableOpacity
-            style={styles.historyCard}
-            onPress={() => alert("History Detail Showing")}
-          >
-            <AppText>test</AppText>
-          </TouchableOpacity>
-          {/* <AppButton onPress={() => alert("Pressed")}>history</AppButton> */}
-        </View>
-      </ScrollView>
+      <View style={styles.SVContainer}>
+        <FlatList
+          data={historyData}
+          keyExtractor={(item) => item.time}
+          renderItem={({ item }) => (
+            <HistoryCard
+              history={item}
+              onPress={() =>
+                navigation.navigate("History Detail", {
+                  item,
+                })
+              }
+            />
+            // () => alert(item.time)
+          )}
+        />
+      </View>
     </Screen>
   );
 }
@@ -35,24 +71,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  historyCard: {
-    backgroundColor: colors.white,
-    borderRadius: 15,
-    height: 200,
-    marginVertical: 5,
-    padding: 10,
-    width: "100%",
-  },
-  startBtn: {
-    backgroundColor: colors.mPink,
-    paddingHorizontal: 14,
-    paddingVertical: 12,
-    borderRadius: 13,
-  },
+
   SVContainer: {
     // backgroundColor: "white",
     height: "100%",
     paddingHorizontal: 15,
+    // paddingTop: 10,
     position: "absolute",
     width: "100%",
   },

@@ -7,6 +7,7 @@ import HomeScreen from "../screens/HomeScreen";
 import HistoryScreen from "../screens/HistoryScreen";
 import ExportScreen from "../screens/ExportScreen";
 import routes from "./routes";
+import HistoryNavigator from "./HistoryNavigation";
 
 const Tab = createBottomTabNavigator();
 const AppTabNavigator = () => (
@@ -30,12 +31,13 @@ const AppTabNavigator = () => (
       }}
     />
     <Tab.Screen
-      name={routes.HISTORY}
-      component={HistoryScreen}
+      name="HistoryStack"
+      component={HistoryNavigator}
       options={{
         tabBarIcon: ({ size, color }) => (
           <MaterialIcons name={"history"} size={size} color={color} />
         ),
+        title: "History",
       }}
     />
     <Tab.Screen
