@@ -98,12 +98,12 @@ function ScreeningNavigator({ navigation }) {
           name="Result"
           component={ScreeningResult}
           options={{
-            // headerLeft: () => null,
+            headerLeft: () => null,
             headerRight: () => {
               return (
                 <View>
                   <TouchableOpacity
-                    onPress={() => navigation.navigate(routes.HISTORY)}
+                    onPress={() => navigation.navigate("HistoryStack")}
                   >
                     <MaterialCommunityIcons
                       name="close-circle-outline"

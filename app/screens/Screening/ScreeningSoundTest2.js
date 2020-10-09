@@ -24,7 +24,8 @@ function ScreeningSoundTest2({ navigation }) {
       });
       await soundObj.loadAsync(
         require("../../assets/test.mp3"),
-        (initialStatus = { volume: 0.001 })
+        (initialStatus = { volume: 0.01 })
+        //0.001
       );
     }
 

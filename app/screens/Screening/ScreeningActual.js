@@ -47,6 +47,21 @@ function ScreeningActual({ navigation }) {
 
           <AppButton
             onPress={() => {
+              const rLeft = Math.random();
+              const rRight = Math.random();
+              if (rLeft > 0.5) {
+                result.left = true;
+              } else {
+                result.left = false;
+              }
+              if (rRight > 0.5) {
+                result.right = true;
+              } else {
+                result.right = false;
+              }
+              console.log(rLeft);
+              console.log(rRight);
+
               navigation.navigate("Result", {
                 result,
               });
