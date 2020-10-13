@@ -1,20 +1,16 @@
 
 % Step 1 : Play Chirp Signal
-yi = chirp1(5000);
+%yi = chirp1(5000);
 
 % Step 2 : Read Audio Files
 % [yo10KhzInear,Fs] = audioread("C:\Users\zhans\Desktop\Auidio\10KHz\10KHzInEar.wav");
 % [yo10KhzNotInEar,Fs] = audioread("C:\Users\zhans\Desktop\Auidio\10KHz\10KHzNotInEar.wav");
 
 % Step 3 : To Align two signals
- [yof, yif] = delay(yo10KhzInear(:,2), yi);
+% [yo10Khz, b] = delay(yo10KhzInear(:,2), yi);
 
-% [output4500B, e] = delay(yo10KhzNotInEar(:,2), yi);
+% [output4500B, e] = delay(b(:,2), input4500);
 
-% Step 4 : To use xcorr to Analyze
-% xorr 的部分
-% [c,lags] = xcorr(yof,yif);
-% stem(lags,c)
 
 % CORR 的部分
 % w = 10;                               % w是滑动窗口的大小3
@@ -29,9 +25,9 @@ yi = chirp1(5000);
 % e = transpose(e);
 % e = e(1:201)
 % plot(e)
-
-
-% Original function to make Chirp signal
+% xorr 的部分
+% [c,lags] = xcorr(a,b);
+% stem(lags,c)
 % function [correctsong] = chirp150()
 % fs = 44100;
 % 
