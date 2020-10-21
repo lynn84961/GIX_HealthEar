@@ -13,7 +13,7 @@
 % Step 3 : To Align two signals
 [yof, yif] = delay(yo10KhzInear(:,2), yo10KhzNotInEar(:,2));
 diff = yof - yif;
- plotfr(signal1path);
+
 
 
 % [output4500B, e] = delay(yo10KhzNotInEar(:,2), yi);
@@ -23,7 +23,9 @@ diff = yof - yif;
 % [c,lags] = xcorr(yi,yo10KhzInear_2);
 % stem(lags,c)
 
-
+% Plot Original signal
+ plotfr(signal1path);
+ 
 % CORR 的部分
 % w = 10;                               % w是滑动窗口的大小3
 % l = length(a);                     % len表示矩阵长度
