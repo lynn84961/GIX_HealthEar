@@ -1,63 +1,47 @@
 
 % Step 1 : Play Chirp Signal
-%  yi = chirp1(5000);
+%   yi = chirp1();
+% % Step 2 : Read Audio Files
 
-% Step 2 : Read Audio Files
- signal1path = "C:\Users\zhans\Desktop\Auidio\10KHz\190317_0085.wav";
- [yo10KhzInear,Fs] = audioread(signal1path);
- signal2path = "C:\Users\zhans\Desktop\Auidio\10KHz\10KHzInEar.wav";
- [yo10KhzInearnowater,Fs] = audioread(signal2path);
-  signal2path = "C:\Users\zhans\Desktop\Auidio\10KHz\10KHzNotInEar.wav";
- [yo10KhzNotInEar,Fs] = audioread(signal2path);
+signal1path = "C:\Users\zhans\Desktop\Auidio\dry\5\190329_0202.wav";
+[s1,Fs] = audioread(signal1path);
+s1 = s1(:,2);
+signal2path = "C:\Users\zhans\Desktop\Auidio\dry\5\190329_0203.wav";
+[s2,Fs] = audioread(signal2path);
+s2 = s2(:,2);
+signal3path = "C:\Users\zhans\Desktop\Auidio\half\5\190329_0231.wav";
+[s3,Fs] = audioread(signal3path);
+s3 = s3(:,2);
+signal4path = "C:\Users\zhans\Desktop\Auidio\half\5\190329_0232.wav";
+[s4,Fs] = audioread(signal4path);
+s4 = s4(:,2);
 
-% Step 3 : To Align two signals
-[yof, yif] = delay(yo10KhzInear(:,2), yo10KhzNotInEar(:,2));
-diff = yof - yif;
 
 
 
-% [output4500B, e] = delay(yo10KhzNotInEar(:,2), yi);
+
+
+% 
+% plotfr(signal1path)
+% 
+% 
+% Step 3 : To Align two signals in the same length
+[s1, yi] = delay(s1, yi);
+[s2, yi] = delay(s2, yi);
+[s3, yi] = delay(s3, yi);
+[s4, yi] = delay(s4, yi);
+[s5, yi] = delay(s5, yi);
+[s6, yi] = delay(s6, yi);
 
 % Step 4 : To use xcorr to Analyze
 % xorr 的部分
-% [c,lags] = xcorr(yi,yo10KhzInear_2);
-% stem(lags,c)
-
-% Plot Original signal
- plotfr(signal1path);
- 
-% CORR 的部分
-% w = 10;                               % w是滑动窗口的大小3
-% l = length(a);                     % len表示矩阵长度
-% e = [];
-% d=1;
-%     for i =  1:w:l - w + 1
-%         R = corrcoef(a(i :(i+w)-1), b(i :(i+w)-1));
-%         e(d) = R(1,2) ;
-%         d = d+1;
-%     end  
-% e = transpose(e);
-% e = e(1:201)
-% plot(e)
+%   [c,lags] = xcorr(wet,yi);
+%  stem(lags,c)
 
 
-% Original function to make Chirp signal
-% function [correctsong] = chirp150()
-% fs = 44100;
-% 
-% t = 0:0.001:2;              % 2 secs @ 1kHz sample rate
-% y = 0.1*chirp(t,0,1,150);       % Start @ DC, cross 150Hz at t=1 sec
-% z = y*0;
-% 
-% specgram(y,256,1e3,256,250) % Display the spectrogram
-% 
-% song = [y z z y z z y z z];
-% correctsong = transpose(song);
-% sound (y, fs)
-% % plot(y)
-% end
 
-function[] = plotfr(aa)
+
+function[x] = plotfr(aa)
 string1 = aa; %你的文件名
 [x1,Fs1] = audioread(string1); %matlab自带音频采集函数
 y1 = x1(:,2);
@@ -72,7 +56,8 @@ w=2*pi/N*k;
 freq=w*Fs1/2/pi;
 y1_fft=fft(y1,N);%快速傅里叶变换
 subplot(212);
-plot(freq,abs(fftshift(y1_fft)));
+x = abs(fftshift(y1_fft));
+plot(freq,x);
 title('Frequency Response');
 xlabel('Frequency');
 ylabel('DB');
@@ -81,17 +66,26 @@ axis([0 10000 0 5000]);%这个用上可以显示你想要的范围，看情况�
 
 end
 
-function [correctsong] = chirp1(f)
+function [y] = chirp1()
+% 
+% tv = 1/(fs)
+% t = 0:tv:2;              % 2 secs @ 10kHz sample rate
+% y = 0.1*chirp(t,0,1,f);       % Start @ DC, cross 1500Hz at t=1 sec
+% z = y*0;
+% specgram(y,256,1e6,256,250) % Display the spectrogram
+% song = [y z y z y];
+% correctsong = transpose(song);
+% sound (song, fs)
+% %plot(y)
 fs = 44100;
-tv = 0.1/(f*2)
-t = 0:tv:2;              % 2 secs @ 10kHz sample rate
-y = 0.1*chirp(t,0,1,f);       % Start @ DC, cross 1500Hz at t=1 sec
-z = y*0;
- specgram(y,256,1e6,256,250) % Display the spectrogram
-song = [y];
-correctsong = transpose(song);
-sound (song, fs)
-%plot(y)
+tv = 1/fs
+t = 0:tv:2;             
+y = chirp(t,10,2,10000, 'Linear', pi/2);  
+
+pspectrum(y,fs,'spectrogram','TimeResolution',0.1, ...
+    'OverlapPercent',99,'Leakage',0.85)
+
+sound(y,fs)
 end
 
 
@@ -159,4 +153,38 @@ end
 % yo1500(:,1)
 
 
+%第二种画法频谱
+% [y,fs]=audioread(signal1path);
+% y = y(:,2);
+% sound(y, Fs);
+% F = fftshift(abs(fft(y)));
+% f = linspace(-Fs/2, Fs/2, numel(y)+1);
+% f(end) = [];    
+% plot(f, F);
 
+
+% Plot spectrum
+%  aa =  plotfr(signal1path);
+
+%Get spectrum from signal tool box
+% x = psd(spectrum.periodogram,dry,'Fs',Fs,'NFFT',length(dry));
+% data = x.Data;
+% plot(data)
+
+
+
+
+
+% CORR 的部分
+% w = 10;                               % w是滑动窗口的大小3
+% l = length(a);                     % len表示矩阵长度
+% e = [];
+% d=1;
+%     for i =  1:w:l - w + 1
+%         R = corrcoef(a(i :(i+w)-1), b(i :(i+w)-1));
+%         e(d) = R(1,2) ;
+%         d = d+1;
+%     end  
+% e = transpose(e);
+% e = e(1:201)
+% plot(e)
