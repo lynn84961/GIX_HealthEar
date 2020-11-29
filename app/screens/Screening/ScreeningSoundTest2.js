@@ -24,7 +24,7 @@ function ScreeningSoundTest2({ navigation }) {
       });
       await soundObj.loadAsync(
         require("../../assets/test.mp3"),
-        (initialStatus = { volume: 0.01 })
+        (initialStatus = { volume: 0.02 })
         //0.001
       );
     }
@@ -53,7 +53,7 @@ function ScreeningSoundTest2({ navigation }) {
         />
         <AppText style={styles.intro}>3. Press the play button below.</AppText>
         <AppText style={styles.intro}>
-          We will start adjusting the sound volume from{" "}
+          We will start calibrating the sound volume from{" "}
           <AppText style={{ color: colors.mPink, fontWeight: "bold" }}>
             lowest
           </AppText>{" "}
@@ -71,17 +71,17 @@ function ScreeningSoundTest2({ navigation }) {
           </TouchableWithoutFeedback>
         )}
         {!audioPlayed && isPlaying && (
-          <AppText style={styles.adjText}>Adjusting volume...</AppText>
+          <AppText style={styles.adjText}>Calibrating volume...</AppText>
         )}
         {audioPlayed && (
-          <AppText style={styles.adjText}>Adjustment done!</AppText>
+          <AppText style={styles.adjText}>Calibration done!</AppText>
         )}
 
         {audioPlayed && (
           <AppButton
             style={styles.nextBtn}
             onPress={() => {
-              navigation.navigate("Actual");
+              navigation.navigate("Ready");
               soundObj.stopAsync();
               setIsPlaying(false);
               setAudioPlayed(false);

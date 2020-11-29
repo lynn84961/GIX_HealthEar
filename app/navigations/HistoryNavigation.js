@@ -15,7 +15,7 @@ function HistoryNavigator({ navigation }) {
     <>
       <Stack.Navigator
         screenOptions={{
-          //   gestureEnabled: false,
+          gestureEnabled: false,
           headerBackTitle: "Back",
           headerTitleStyle: {
             color: colors.mBlue,
@@ -28,7 +28,9 @@ function HistoryNavigator({ navigation }) {
         <Stack.Screen
           name={routes.HISTORY}
           component={HistoryScreen}
-          // headerLeft: () => null
+          options={{
+            headerLeft: () => null,
+          }}
         />
         <Stack.Screen
           name="History Detail"

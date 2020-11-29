@@ -17,28 +17,34 @@ import navigationThemes from "../navigations/navigationThemes";
 
 const historyData = [
   {
-    date: "Oct 11th, 2020",
-    time: "13:23",
-    left: true,
-    right: true,
-  },
-  {
     date: "Oct 10th, 2020",
-    time: "19:33",
+    time: "13:23",
     left: true,
     right: false,
   },
   {
     date: "Oct 9th, 2020",
-    time: "19:25",
+    time: "19:33",
     left: true,
     right: false,
   },
   {
     date: "Oct 8th, 2020",
+    time: "19:25",
+    left: true,
+    right: true,
+  },
+  {
+    date: "Oct 7th, 2020",
     time: "18:50",
+    left: true,
+    right: true,
+  },
+  {
+    date: "Oct 6th, 2020",
+    time: "15:40",
     left: false,
-    right: false,
+    right: true,
   },
 ];
 
@@ -69,15 +75,14 @@ function HistoryScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     alignItems: "center",
+
     justifyContent: "center",
   },
 
   SVContainer: {
-    // backgroundColor: "white",
     height: "100%",
     paddingHorizontal: 15,
-    // paddingTop: 10,
-    position: "absolute",
+
     width: "100%",
   },
 });

@@ -11,9 +11,10 @@ import AppButton from "../components/AppButton";
 import AppText from "../components/AppText";
 import ScreeningIntro from "../screens/Screening/ScreeningIntro";
 import ScreeningSoundTest from "../screens/Screening/ScreeningSoundTest";
-import ScreeningActual from "../screens/Screening/ScreeningActual";
+import ScreeningReady from "../screens/Screening/ScreeningReady";
 import ScreeningResult from "../screens/Screening/ScreeningResult";
 import ScreeningSoundTest2 from "../screens/Screening/ScreeningSoundTest2";
+import ScreeningActual from "../screens/Screening/ScreeningActual";
 
 //navigation.navigate(routes.APP_TAB)
 const Stack = createStackNavigator();
@@ -93,7 +94,12 @@ function ScreeningNavigator({ navigation }) {
           component={ScreeningSoundTest2}
           options={{ headerTitle: "Sound Test" }}
         />
-        <Stack.Screen name="Actual" component={ScreeningActual} />
+        <Stack.Screen name="Ready" component={ScreeningReady} />
+        <Stack.Screen
+          name="Actual"
+          component={ScreeningActual}
+          options={{ headerShown: false }}
+        />
         <Stack.Screen
           name="Result"
           component={ScreeningResult}
@@ -105,12 +111,15 @@ function ScreeningNavigator({ navigation }) {
                   <TouchableOpacity
                     onPress={() => navigation.navigate("HistoryStack")}
                   >
-                    <MaterialCommunityIcons
+                    <AppText style={{ color: colors.mBlue, paddingRight: 5 }}>
+                      Done
+                    </AppText>
+                    {/* <MaterialCommunityIcons
                       name="close-circle-outline"
                       size={30}
                       color={colors.mBlue}
                       style={{ paddingRight: 10 }}
-                    />
+                    /> */}
                   </TouchableOpacity>
                 </View>
               );

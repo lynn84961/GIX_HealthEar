@@ -22,7 +22,7 @@ function ScreeningSoundTest({ navigation }) {
           1. Please put the earbuds on for your kid.
         </AppText>
         <AppText style={styles.intro}>
-          2. Turn your phone's volume to 100%.
+          2. Turn your phone's volume to 50%.
         </AppText>
 
         <AppButton

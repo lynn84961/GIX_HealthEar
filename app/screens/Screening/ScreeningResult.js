@@ -80,16 +80,11 @@ function ScreeningResult({ route }) {
             <ListItemSeparator width="100%" />
 
             <View style={styles.sgContainer}>
-              <AppText style={styles.sectionTitle}>Suggesstion</AppText>
+              <AppText style={styles.sectionTitle}>Suggestion</AppText>
               <Text style={styles.sg}>
-                1. Use over-the-counter pain relief drops for ears. Or, ask the
-                provider about prescription eardrops to relieve pain.
+                Our scan shows there is likely fluid in the middle ear. This is
+                a condition that warrants a doctor’s consultation.
               </Text>
-              <Text style={styles.sg}>
-                2. Take over-the-counter medicines such as ibuprofen or
-                acetaminophen for pain or fever.
-              </Text>
-              <Text style={styles.sg}>3. DO NOT give aspirin to children.</Text>
             </View>
 
             <ListItemSeparator width="100%" />
@@ -97,12 +92,12 @@ function ScreeningResult({ route }) {
             <View style={styles.ntContainer}>
               <View style={styles.ntTitleContainer}>
                 <AppText style={styles.sectionTitle}>Notes</AppText>
-                <MaterialIcons
+                {/* <MaterialIcons
                   name="edit"
                   size={20}
                   color={colors.mBlue}
                   // style={{ borderColor: "black", borderWidth: 1 }}
-                />
+                /> */}
               </View>
               <TextInput
                 multiline={true}
@@ -165,7 +160,7 @@ const styles = StyleSheet.create({
   input: {
     backgroundColor: colors.light,
     borderRadius: 5,
-    // height: 200,
+    height: 100,
     padding: 15,
     width: "100%",
     // marginLeft: "5%",
