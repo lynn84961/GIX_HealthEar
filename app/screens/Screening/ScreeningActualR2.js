@@ -25,7 +25,7 @@ const windowHeight = Dimensions.get("window").height;
 const windowWidth = Dimensions.get("window").width;
 const tdOffset = 2000;
 
-function ScreeningActual({ navigation }) {
+function ScreeningActualR2({ navigation }) {
   const spinValue = useState(new Animated.Value(-1))[0];
   function rotateElephant() {
     Animated.timing(spinValue, {
@@ -296,7 +296,8 @@ function ScreeningActual({ navigation }) {
         <CountDown
           until={10}
           onFinish={() => {
-            navigation.navigate("Sound Test R2");
+            navigation.navigate("Result");
+
             // console.log("hahaha");
           }}
           size={40}
@@ -384,4 +385,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ScreeningActual;
+export default ScreeningActualR2;

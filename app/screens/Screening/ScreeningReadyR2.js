@@ -7,7 +7,7 @@ import colors from "../../config/colors";
 import Screen from "../../components/Screen";
 import AppButton from "../../components/AppButton";
 
-function ScreeningReady({ navigation }) {
+function ScreeningReadyR2({ navigation }) {
   return (
     <Screen style={styles.container}>
       <View style={styles.contentWrapper}>
@@ -29,7 +29,7 @@ function ScreeningReady({ navigation }) {
         <AppButton
           style={styles.nextBtn}
           onPress={() => {
-            navigation.navigate("Actual");
+            navigation.navigate("Actual R2");
           }}
         >
           Start
@@ -87,4 +87,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ScreeningReady;
+export default ScreeningReadyR2;

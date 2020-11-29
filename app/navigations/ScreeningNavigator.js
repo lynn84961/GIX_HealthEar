@@ -15,6 +15,10 @@ import ScreeningReady from "../screens/Screening/ScreeningReady";
 import ScreeningResult from "../screens/Screening/ScreeningResult";
 import ScreeningSoundTest2 from "../screens/Screening/ScreeningSoundTest2";
 import ScreeningActual from "../screens/Screening/ScreeningActual";
+import ScreeningSoundTestR2 from "../screens/Screening/ScreeningSoundTestR2";
+import ScreeningSoundTest2R2 from "../screens/Screening/ScreeningSoundTest2R2";
+import ScreeningReadyR2 from "../screens/Screening/ScreeningReadyR2";
+import ScreeningActualR2 from "../screens/Screening/ScreeningActualR2";
 
 //navigation.navigate(routes.APP_TAB)
 const Stack = createStackNavigator();
@@ -90,14 +94,30 @@ function ScreeningNavigator({ navigation }) {
         <Stack.Screen name="Connection" component={ScreeningConnection} />
         <Stack.Screen name="Sound Test" component={ScreeningSoundTest} />
         <Stack.Screen
+          name="Sound Test R2"
+          component={ScreeningSoundTestR2}
+          options={{ headerLeft: () => null, headerTitle: "Sound Test" }}
+        />
+        <Stack.Screen
           name="Sound Test 2"
           component={ScreeningSoundTest2}
           options={{ headerTitle: "Sound Test" }}
         />
+        <Stack.Screen
+          name="Sound Test 2 R2"
+          component={ScreeningSoundTest2R2}
+          options={{ headerTitle: "Sound Test" }}
+        />
         <Stack.Screen name="Ready" component={ScreeningReady} />
+        <Stack.Screen name="Ready R2" component={ScreeningReadyR2} />
         <Stack.Screen
           name="Actual"
           component={ScreeningActual}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Actual R2"
+          component={ScreeningActualR2}
           options={{ headerShown: false }}
         />
         <Stack.Screen
