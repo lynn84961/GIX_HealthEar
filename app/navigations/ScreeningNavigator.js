@@ -1,12 +1,5 @@
 import React, { useState } from "react";
-import {
-  Button,
-  Text,
-  View,
-  TouchableOpacity,
-  Modal,
-  StyleSheet,
-} from "react-native";
+import { View, TouchableOpacity, Modal, StyleSheet } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
 
@@ -18,16 +11,11 @@ import AppButton from "../components/AppButton";
 import AppText from "../components/AppText";
 import ScreeningIntro from "../screens/Screening/ScreeningIntro";
 import ScreeningSoundTest from "../screens/Screening/ScreeningSoundTest";
-import ScreeningActual from "../screens/Screening/ScreeningActual";
+import ScreeningReady from "../screens/Screening/ScreeningReady";
 import ScreeningResult from "../screens/Screening/ScreeningResult";
 import ScreeningSoundTest2 from "../screens/Screening/ScreeningSoundTest2";
+import ScreeningActual from "../screens/Screening/ScreeningActual";
 
-const Process2 = ({ navigation }) => (
-  <Screen>
-    <Text>Process 1</Text>
-    <Button title="Leave" onPress={() => navigation.navigate(routes.APP_TAB)} />
-  </Screen>
-);
 //navigation.navigate(routes.APP_TAB)
 const Stack = createStackNavigator();
 
@@ -39,6 +27,7 @@ function ScreeningNavigator({ navigation }) {
       <Stack.Navigator
         screenOptions={{
           gestureEnabled: false,
+          headerBackTitle: "Back",
           headerTitleStyle: {
             color: colors.mBlue,
             fontWeight: "bold",
@@ -105,31 +94,38 @@ function ScreeningNavigator({ navigation }) {
           component={ScreeningSoundTest2}
           options={{ headerTitle: "Sound Test" }}
         />
-        <Stack.Screen name="Actual" component={ScreeningActual} />
+        <Stack.Screen name="Ready" component={ScreeningReady} />
+        <Stack.Screen
+          name="Actual"
+          component={ScreeningActual}
+          options={{ headerShown: false }}
+        />
         <Stack.Screen
           name="Result"
           component={ScreeningResult}
           options={{
-            // headerLeft: () => null,
+            headerLeft: () => null,
             headerRight: () => {
               return (
                 <View>
                   <TouchableOpacity
-                    onPress={() => navigation.navigate(routes.HISTORY)}
+                    onPress={() => navigation.navigate("HistoryStack")}
                   >
-                    <MaterialCommunityIcons
+                    <AppText style={{ color: colors.mBlue, paddingRight: 5 }}>
+                      Done
+                    </AppText>
+                    {/* <MaterialCommunityIcons
                       name="close-circle-outline"
                       size={30}
                       color={colors.mBlue}
                       style={{ paddingRight: 10 }}
-                    />
+                    /> */}
                   </TouchableOpacity>
                 </View>
               );
             },
           }}
         />
-        <Stack.Screen name="Process2" component={Process2} />
       </Stack.Navigator>
 
       <Modal visible={modalVisible}>

@@ -13,12 +13,16 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true
     },
     "web": {
       "favicon": "./app/assets/favicon.png"
-    }
+    },
+    "description": "HealthEar - Global Innovation Exchange, University of Washington",
+    "githubUrl": "https://github.com/lynn84961/GIX_HealthEar"
   }
 }

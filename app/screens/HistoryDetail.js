@@ -12,35 +12,41 @@ import {
 import { ScrollView } from "react-native-gesture-handler";
 import { MaterialIcons } from "@expo/vector-icons";
 
-import AppText from "../../components/AppText";
-import colors from "../../config/colors";
-import Screen from "../../components/Screen";
-import ListItemSeparator from "../../components/ListItemSeparator";
-import defaultStyles from "../../config/style";
+import AppText from "../components/AppText";
+import colors from "../config/colors";
+import Screen from "../components/Screen";
+import ListItemSeparator from "../components/ListItemSeparator";
+import defaultStyles from "../config/style";
 
-function ScreeningResult({ route }) {
-  const result = route.params.result;
+function HistoryDetail({ navigation, route }) {
+  const history = route.params.item;
+
   const leftEar = {
     color: colors.mBlue,
     text: "No Fluid",
-    imgSrc: require("../../assets/earBlueL.png"),
+    imgSrc: require("../assets/earBlueL.png"),
   };
   const rightEar = {
     color: colors.mBlue,
     text: "No Fluid",
-    imgSrc: require("../../assets/earBlueR.png"),
+    imgSrc: require("../assets/earBlueR.png"),
   };
-  if (result.left) {
+  if (history.left) {
     leftEar.color = colors.mPink;
     leftEar.text = "Has Fluid";
-    leftEar.imgSrc = require("../../assets/earPinkL.png");
+    leftEar.imgSrc = require("../assets/earPinkL.png");
   }
-  if (result.right) {
+  if (history.right) {
     rightEar.color = colors.mPink;
     rightEar.text = "Has Fluid";
-    rightEar.imgSrc = require("../../assets/earPinkR.png");
+    rightEar.imgSrc = require("../assets/earPinkR.png");
   }
   const inputPlaceholder = "Enter your notes here";
+
+  var showSuggestion = false;
+  if (history.left || history.right) {
+    showSuggestion = true;
+  }
 
   return (
     <Screen style={styles.container}>
@@ -79,13 +85,15 @@ function ScreeningResult({ route }) {
 
             <ListItemSeparator width="100%" />
 
-            <View style={styles.sgContainer}>
-              <AppText style={styles.sectionTitle}>Suggestion</AppText>
-              <Text style={styles.sg}>
-                Our scan shows there is likely fluid in the middle ear. This is
-                a condition that warrants a doctor’s consultation.
-              </Text>
-            </View>
+            {showSuggestion && (
+              <View style={styles.sgContainer}>
+                <AppText style={styles.sectionTitle}>Suggestion</AppText>
+                <Text style={styles.sg}>
+                  Our scan shows there is likely fluid in the middle ear. This
+                  is a condition that warrants a doctor’s consultation.
+                </Text>
+              </View>
+            )}
 
             <ListItemSeparator width="100%" />
 
@@ -200,4 +208,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ScreeningResult;
+export default HistoryDetail;

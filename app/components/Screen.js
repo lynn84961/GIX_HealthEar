@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
     borderTopColor: colors.mBlue,
     flex: 1,
-    paddingTop: Constants.statusBarHeight,
+    // paddingTop: Constants.statusBarHeight,
   },
   view: {
     flex: 1,
