@@ -13,6 +13,7 @@ import { ScrollView } from "react-native-gesture-handler";
 import { MaterialIcons } from "@expo/vector-icons";
 import * as firebase from "firebase";
 import "firebase/firestore";
+import moment from "moment";
 
 import AppText from "../../components/AppText";
 import colors from "../../config/colors";
@@ -20,26 +21,39 @@ import Screen from "../../components/Screen";
 import ListItemSeparator from "../../components/ListItemSeparator";
 import defaultStyles from "../../config/style";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyA1tQuxu4JCLlmm9z7g2yNTNuamX_y9QYE",
-  authDomain: "healthear-firebase-test.firebaseapp.com",
-  databaseURL: "https://healthear-firebase-test.firebaseio.com",
-  projectId: "healthear-firebase-test",
-  storageBucket: "healthear-firebase-test.appspot.com",
-  messagingSenderId: "660334492622",
-  appId: "1:660334492622:web:83b314b958e3ac1142899f",
+// const firebaseConfig = {
+//   apiKey: "AIzaSyA1tQuxu4JCLlmm9z7g2yNTNuamX_y9QYE",
+//   authDomain: "healthear-firebase-test.firebaseapp.com",
+//   databaseURL: "https://healthear-firebase-test.firebaseio.com",
+//   projectId: "healthear-firebase-test",
+//   storageBucket: "healthear-firebase-test.appspot.com",
+//   messagingSenderId: "660334492622",
+//   appId: "1:660334492622:web:83b314b958e3ac1142899f",
+// };
+// firebase.initializeApp(firebaseConfig);
+
+// // LogBox.ignoreAllLogs(["Setting a time for a long period of time"]);
+// var result = {};
+// firebase
+//   .database()
+//   .ref("result")
+//   .on("value", (snapshot) => {
+//     result = snapshot.val();
+//   });
+var result = {
+  left: true,
+  right: false,
 };
-firebase.initializeApp(firebaseConfig);
 
-// LogBox.ignoreAllLogs(["Setting a time for a long period of time"]);
-var result = {};
-firebase
-  .database()
-  .ref("result")
-  .on("value", (snapshot) => {
-    result = snapshot.val();
-  });
-
+const resultData = [
+  {
+    date: moment().format("MMM Do YYYY"),
+    time: moment().format("HH:mm"),
+    left: result.left,
+    right: result.right,
+  },
+];
+global.historyData = resultData.concat(global.historyData);
 function ScreeningResult() {
   const leftEar = {
     color: colors.mBlue,

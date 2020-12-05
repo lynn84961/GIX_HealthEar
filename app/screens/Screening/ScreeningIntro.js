@@ -29,6 +29,7 @@ function ScreeningIntro({ navigation }) {
         <AppButton
           style={styles.nextBtn}
           onPress={() => navigation.navigate("Connection")}
+          // onPress={() => navigation.navigate("Result")}
         >
           Got It
         </AppButton>
