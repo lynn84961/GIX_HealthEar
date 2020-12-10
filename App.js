@@ -15,6 +15,7 @@ import LandingScreen from "./app/screens/LandingScreen";
 import AppText from "./app/components/AppText";
 import AppButton from "./app/components/AppButton";
 import colors from "./app/config/colors";
+import FirebaseTest from "./app/screens/Screening/FirebaseTest";
 
 export default function App() {
   const [modalVisible, setModalVisible] = useState(true);
@@ -82,6 +83,7 @@ export default function App() {
       <NavigationContainer theme={navigationThemes}>
         <RootNavigation />
       </NavigationContainer>
+      {/* <FirebaseTest /> */}
       {modal}
     </>
   );

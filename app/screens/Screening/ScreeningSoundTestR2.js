@@ -9,7 +9,7 @@ import colors from "../../config/colors";
 import Screen from "../../components/Screen";
 import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 
-function ScreeningSoundTest({ navigation }) {
+function ScreeningSoundTestR2({ navigation }) {
   return (
     <Screen style={styles.container}>
       <View style={styles.contentWrapper}>
@@ -19,7 +19,7 @@ function ScreeningSoundTest({ navigation }) {
           style={styles.parentImg}
         />
         <AppText style={styles.intro}>
-          1. Please put the <AppText style={styles.side}>LEFT</AppText> earbud
+          1. Please put the <AppText style={styles.side}>RIGHT</AppText> earbud
           on for your kid.
         </AppText>
         <AppText style={styles.intro}>
@@ -29,7 +29,7 @@ function ScreeningSoundTest({ navigation }) {
         <AppButton
           style={styles.nextBtn}
           onPress={() => {
-            navigation.navigate("Sound Test 2");
+            navigation.navigate("Sound Test 2 R2");
           }}
         >
           Next
@@ -72,4 +72,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ScreeningSoundTest;
+export default ScreeningSoundTestR2;

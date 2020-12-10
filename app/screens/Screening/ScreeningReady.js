@@ -24,7 +24,7 @@ function ScreeningReady({ navigation }) {
           source={require("../../assets/childPink.png")}
           style={styles.childImg}
         />
-        <AppText style={styles.child}>Let's play a game!</AppText>
+        <AppText style={styles.child}>Let's watch an animation!</AppText>
 
         <AppButton
           style={styles.nextBtn}

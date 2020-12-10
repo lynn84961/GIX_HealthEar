@@ -1,5 +1,5 @@
-import React from "react";
-import { View, StyleSheet, Text, Image } from "react-native";
+import React, { useState } from "react";
+import { View, StyleSheet, Text, Image, Modal } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import AppText from "../../components/AppText";
@@ -7,7 +7,7 @@ import colors from "../../config/colors";
 import Screen from "../../components/Screen";
 import AppButton from "../../components/AppButton";
 
-function ScreeningIntro({ navigation }) {
+function ScreeningReadyR2({ navigation }) {
   return (
     <Screen style={styles.container}>
       <View style={styles.contentWrapper}>
@@ -16,22 +16,23 @@ function ScreeningIntro({ navigation }) {
           source={require("../../assets/parent.png")}
           style={styles.parentImg}
         />
-        <AppText>Means this is a step for</AppText>
-        <AppText style={styles.highlight}>PARENT</AppText>
+        <AppText style={styles.parent}>
+          Please hand the phone to your kid.
+        </AppText>
         <Image
           resizeMode="contain"
-          source={require("../../assets/child.png")}
+          source={require("../../assets/childPink.png")}
           style={styles.childImg}
         />
-        <AppText>Means this is a step for</AppText>
-        <AppText style={styles.highlight}>KID</AppText>
+        <AppText style={styles.child}>Let's watch an animation!</AppText>
 
         <AppButton
           style={styles.nextBtn}
-          onPress={() => navigation.navigate("Connection")}
-          // onPress={() => navigation.navigate("Result")}
+          onPress={() => {
+            navigation.navigate("Actual R2");
+          }}
         >
-          Got It
+          Start
         </AppButton>
       </View>
     </Screen>
@@ -45,22 +46,9 @@ const styles = StyleSheet.create({
     height: "90%",
     position: "absolute",
     top: "10%",
-    width: "70%",
+    width: "80%",
     // borderWidth: 1,
     // borderColor: "black",
-  },
-
-  childImg: {
-    height: 60,
-    marginBottom: 10,
-    marginTop: 10,
-    width: "25%",
-  },
-
-  highlight: {
-    color: colors.mPink,
-    fontWeight: "bold",
-    marginBottom: 30,
   },
 
   nextBtn: {
@@ -68,7 +56,29 @@ const styles = StyleSheet.create({
     bottom: 50,
     position: "absolute",
   },
-
+  child: {
+    color: colors.mPink,
+    fontWeight: "bold",
+  },
+  childImg: {
+    height: 60,
+    marginBottom: 10,
+    // marginRight: 5,
+    width: "25%",
+  },
+  modalContainer: {
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  nextBtn: {
+    alignSelf: "center",
+    bottom: 50,
+    position: "absolute",
+  },
+  parent: {
+    marginBottom: 30,
+    // width: "70%",
+  },
   parentImg: {
     height: 60,
     marginBottom: 10,
@@ -77,4 +87,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ScreeningIntro;
+export default ScreeningReadyR2;
